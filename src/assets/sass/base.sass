@@ -1,0 +1,47 @@
+@font-face
+	font-family: 'Roboto'
+	font-style: normal
+	font-weight: 400
+	src: local('Roboto'), local('Roboto-Regular'), url('/assets/fonts/roboto-v29-latin_cyrillic-regular.woff2') format('woff2')
+	font-display: block
+
+@font-face
+	font-family: 'Roboto'
+	font-style: normal
+	font-weight: 500
+	src: local('Roboto Medium'), local('Roboto-Medium'), url('/assets/fonts/roboto-v29-latin_cyrillic-500.woff2') format('woff2')
+	font-display: block
+
+html
+	box-sizing: border-box
+*, *:before, *:after
+	box-sizing: inherit
+
+body
+	margin: 0
+	padding: 0
+	font-family: 'Roboto', sans-serif
+
+ul
+	margin: 0
+	padding: 0
+	list-style: none
+
+img, picture,svg
+	max-width: 100%
+	display: block
+
+$desktop: 1400px
+$notebook: 100%
+
+@mixin mw()
+	@media(min-width: 1900px)
+		margin: 0 calc(50% - $desktop/2)
+	@media(max-width: 1899px)
+		margin: 0 1rem
+
+@mixin pw()
+	@media(min-width: 1900px)
+		padding: 0 calc(50% - $desktop/2)
+	@media(max-width: 1899px)
+		padding: 1rem

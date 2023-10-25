@@ -1,2 +1,19 @@
-header
-  @include pw
+body > .wrapper
+	@include mw
+	margin-top: 2rem !important
+	background-color: #fff
+	display: grid
+	grid-template-columns: 220px 1fr 300px
+	border-radius: 8px
+
+	aside
+		border-right: 1px solid $border_color
+	#sidebar	
+		border-left: 1px solid $border_color
+
+footer
+	color: #fff
+	background-color: #1A1C33
+	grid-column: 1/4
+	border-bottom-right-radius: 8px	
+	border-bottom-left-radius: 8px	

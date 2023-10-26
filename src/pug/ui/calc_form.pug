@@ -35,12 +35,43 @@
 		span Наименование груза
 
 	.type
-		span Тип транспорта
+		span.t Тип транспорта
 		.tt
 			.item
 				span.title Крытая
-				.row
-					input(type="checkbox")
-					span Тент
+				.list
+					label
+						input(type="checkbox")
+						span Тент
+					label
+						input(type="checkbox")
+						span Реф.
+					label
+						input(type="checkbox")
+						span Реф. тушевоз
+					label
+						input(type="checkbox")
+						span Цельнометал.
+			.item
+				span.title Открытая
+				.list
+					label
+						input(type="checkbox")
+						span Открытая
+					label
+						input(type="checkbox")
+						span Контейнеровоз
+			.item
+				span.title Цистерна
+				.list
+					label
+						input(type="checkbox")
+						span Цистерна
+
+	label.phone
+		input(type="text" required)
+		span Ваш номер телефона
+
+	button.send.regular() Отправить	
 
 

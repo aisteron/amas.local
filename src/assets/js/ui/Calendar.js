@@ -51,6 +51,7 @@ export const Calendar = {
 		})
 
 		document.addEventListener("click", event => {
+			if(!qs('.flatpickr-calendar')) return
 			if(qs('.flatpickr-calendar').contains(event.target)) return
 			if(event.target == qs('label.calendar input')) return
 			f.destroy()

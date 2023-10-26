@@ -56,3 +56,16 @@ $notebook: 100%
 		padding: 0 calc(50% - $desktop/2)
 	@media(max-width: 1899px)
 		padding: 1rem
+
+button.regular
+	font-family: "Open Sans"
+	font-size: 14px
+	padding: 8px 24px
+	border-radius: 4px
+	border: 1px solid $grey
+	cursor: pointer
+	font-weight: 600
+	background-color: #fff
+	&[disabled]
+		border-color: #ccc
+		cursor: not-allowed

@@ -8,12 +8,203 @@ body > .wrapper
 
 	aside
 		border-right: 1px solid $border_color
+		.logo
+			display: flex
+			justify-content: space-between
+			align-items: center
+			padding-top: 15px
+			padding-left: 20px
+			padding-right: 20px
+			.dsc
+				span
+					font-size: 13px
+					color: $black
+					display: block
+		nav
+			margin-top: 33px
+			ul
+				li
+					&.active
+						position: relative
+						a
+							color: $purple
+							img
+								filter: $purple_icon
+						&:after
+							content: url(/assets/img/icons/nav/active_item.svg)
+							width: 3px
+							height: 26px
+							position: absolute
+							top: -2px
+					&:not(:last-child) a
+						padding-bottom: 20px
+					a
+						color: $grey
+						text-decoration: none
+						font-weight: 600
+						font-size: 14px
+						display: flex
+						align-items: center
+						padding-left: 20px
+						&:hover
+							color: $purple
+							img
+								filter: $purple_icon
+					img
+						margin-right: 1rem
+						filter: $grey_icon
 	#sidebar	
 		border-left: 1px solid $border_color
+		padding: 20px
+		display: flex
+		flex-direction: column
+		gap: 20px
+	section#content
+		padding: 0 20px
+	#header_contacts
+		display: flex
+		font-weight: 600
+		font-size: 14px
+		padding-top: 20px
+		padding-bottom: 14px
+		a
+			color: $purple
+			text-decoration: none
+			&.callback
+				color: $orange
+			&:hover
+				text-decoration: underline	
 
-footer
-	color: #fff
-	background-color: #1A1C33
-	grid-column: 1/4
-	border-bottom-right-radius: 8px	
-	border-bottom-left-radius: 8px	
+		ul.mess
+			display: flex
+			gap: 1rem
+			flex-grow: 1
+			justify-content: center
+			li
+				&:not(:last-child) 
+					&:after
+						content: url(/assets/img/icons/divider.svg)
+						margin-left: 1rem
+						position: relative
+						top: 3px
+	#search
+		display: flex
+		align-items: center
+		input
+			width: 100%
+			flex-grow: 1
+			border: 1px solid $border_color
+			border-radius: 8px
+			height: 38px
+			margin-right: -1rem
+			&:focus
+				outline: none
+				border-color: $purple
+		img.search
+			position: relative
+			left: -1rem
+			filter: $grey_icon
+			cursor: pointer
+			&:hover
+				filter: $purple_icon
+	#calc_form
+		padding: 20px
+		border: 1px solid $orange
+		background-color: rgba(255, 153, 32, 0.03)
+		border-radius: 8px
+		display: flex
+		flex-direction: column
+		gap: 26px
+		h3
+			margin: 0
+			font-size: 1rem
+			font-weight: 600
+		.double
+			display: flex
+			justify-content: space-between
+			gap: 1rem
+			input
+				//width: 50%
+		label
+			position: relative
+			font-size: 14px
+			color: $black
+			input[type="text"]
+				border: none
+				border-bottom: 1px solid $orange
+				width: 100%
+				font-family: Open Sans
+				&:focus, &:valid
+					outline: none
+					border-color: $black
+					& ~ span
+						top: -15px
+						font-size: 12px
+						left: 0
+			>span
+				position: absolute
+				left: 0
+				top: -3px
+				left: 6px
+				transition: all 0.3s ease
+		label.calendar
+			display: flex
+			justify-content: space-between
+			position: relative
+			.flatpickr-calendar
+				position: absolute
+				top:22px
+			input
+				flex-grow: 1
+			img.calendar
+				position: relative
+				top: -6px
+				margin-left: -1rem
+				filter: $orange_icon
+				cursor: pointer
+				&:hover
+					filter: $purple_icon
+			span
+				top: -6px
+		.type
+			&.open
+				span
+					border-color: $purple
+					&:after
+						transform: rotate(180deg)
+			> span
+				position: relative
+				display: block
+				border-bottom: 1px solid $orange
+				padding-bottom: 2px
+				padding-left: 3px
+				left: 0
+				cursor: pointer
+				margin-bottom: 0
+				bottom: 0
+				&:after
+					content: url(/assets/img/icons/chevron.svg)
+					position: absolute
+					right: 0
+					top: -6px
+					filter: $orange_icon
+			.tt
+				border: 1px solid $purple
+				margin-top: -4px
+				.item
+					span.title
+						color: #6A6C7F
+						background-color: rgba(103, 121, 255, 0.09)
+						display: block
+						padding: 6px 18px
+
+				
+
+
+
+	footer
+		color: #fff
+		background-color: #1A1C33
+		grid-column: 1/4
+		border-bottom-right-radius: 8px	
+		border-bottom-left-radius: 8px	

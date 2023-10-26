@@ -1,9 +1,49 @@
 aside
-	a.logo(href="/")
-		img(src="/assets/img/logo.svg" width="55" height="24")
-	p nav
+	.logo(href="/")
+		a
+			img(src="/assets/img/logo.svg" width="55" height="24")
+		.dsc
+			span международные
+			span грузоперевозки
+	nav
+		ul
+			li.active
+				a(href="/")
+					img(src="/assets/img/icons/nav/home.svg" width="23" height="21")
+					span Главная
+			li
+				a(href="/routes.html")
+					img(src="/assets/img/icons/nav/routes.svg" width="22" height="22")
+					span Маршруты
+			li
+				a(href="/calc.html")
+					img(src="/assets/img/icons/nav/calc.svg" width="24" height="24")
+					span Расчет ставки
+			li
+				a(href="/about.html")
+					img(src="/assets/img/icons/nav/about.svg" width="24" height="24")
+					span О нас
+			li
+				a(href="/contacts.html")
+					img(src="/assets/img/icons/nav/contacts.svg" width="24" height="24")
+					span Контакты
 section#content
-	.contacts
-		p contacts
+	#header_contacts
+		a.tel(href="tel:") +375 29 690 39 73
+		ul.mess
+			li.viber
+				a(href="#") Viber
+			li.wa
+				a(href="#") WhatsApp
+			li.sk
+				a(href="#") Skype
+			li.tg
+				a(href="#") Telegram
+		a.callback(href="#") Перезвоните мне
+
 #sidebar
-	p search
+	#search
+		input(type="text")
+		img.search(src="/assets/img/icons/search.svg" width="18" height="20")
+	include ../../ui/calc_form
+

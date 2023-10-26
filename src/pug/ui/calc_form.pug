@@ -1,0 +1,46 @@
+#calc_form
+	h3 Расчет стоимости
+
+	label.from
+		input(type="text" required)
+		span Откуда
+
+	label.to
+		input(type="text" required)
+		span Куда
+
+	.double.mass
+		label.mass_from
+			input(type="text" required)
+			span Масса, тн, от
+		label.mass_to
+			input(type="text" required)
+			span Масса, до
+
+	.double.vol
+		label.vol_from
+			input(type="text" required)
+			span Объем, м<sup>3</sup>, от
+		label.vol_to
+			input(type="text" required)
+			span Объем, до
+	
+	label.calendar
+		input(type="text" required)
+		span Дата отправления
+		img.calendar(src="/assets/img/icons/calendar.svg" width="18" height="18")
+
+	label.name
+		input(type="text" required)
+		span Наименование груза
+
+	.type
+		span Тип транспорта
+		.tt
+			.item
+				span.title Крытая
+				.row
+					input(type="checkbox")
+					span Тент
+
+

@@ -1,5 +1,10 @@
 import "regenerator-runtime/runtime.js";
 Node.prototype.listen = Node.prototype.addEventListener;
+
+export const cfg = {
+	host: "https://amas.by"
+}
+
 export let doc=document,
     qsa=(s,o=doc)=>o?.querySelectorAll(s),
     qs=(s,o=doc)=>o?.querySelector(s);

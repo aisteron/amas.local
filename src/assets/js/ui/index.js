@@ -1,4 +1,4 @@
-import { qs,qsa } from "../libs"
+import { qs,qsa, xml } from "../libs"
 import { Calendar } from "./Calendar"
 import { Sw } from "./Swiper"
 
@@ -8,6 +8,7 @@ export const Ui = async () =>{
 
 	transport_type_dropdown()
 	routes_accordion()
+	
 	await Sw.load()
 	Sw.lazy(qs('[swiper]'))
 	Sw.init(qs('[swiper]'),{
@@ -16,6 +17,8 @@ export const Ui = async () =>{
 			prevEl: qs('.arrows img.prev'),
 		},
 	})
+
+	home_callback_form()
 	
 }
 
@@ -35,5 +38,15 @@ function routes_accordion(){
 		el.listen('click', e => {
 			e.target.closest('li').classList.toggle('open')
 		})
+	})
+}
+
+function home_callback_form(){
+	let form = qs('.widget.callback form')
+	if(!form) return
+	
+	form.listen('submit', async e => {
+		e.preventDefault()
+		await xml("widget_callback",{phone: qs('input',e.target).value}, '/api')
 	})
 }

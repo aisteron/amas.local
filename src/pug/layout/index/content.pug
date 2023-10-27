@@ -1,6 +1,6 @@
 aside
-	.logo(href="/")
-		a
+	.logo
+		a(href="/")
 			img(src="/assets/img/logo.svg" width="55" height="24")
 		.dsc
 			span международные
@@ -40,7 +40,8 @@ section#content
 			li.tg
 				a(href="#") Telegram
 		a.callback(href="#") Перезвоните мне
-	include ../../ui/pages/home/swiper.pug	
+	include ../../ui/pages/home/swiper.pug
+	include ../../ui/pages/home/content.pug
 
 #sidebar
 	#search

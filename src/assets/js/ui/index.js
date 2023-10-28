@@ -19,6 +19,7 @@ export const Ui = async () =>{
 	})
 
 	home_callback_form()
+	soc_dropdown()
 	
 }
 
@@ -48,5 +49,20 @@ function home_callback_form(){
 	form.listen('submit', async e => {
 		e.preventDefault()
 		await xml("widget_callback",{phone: qs('input',e.target).value}, '/api')
+	})
+}
+
+function soc_dropdown(){
+	let dd = qs('.mobile-dropdown > img')
+	if(!dd) return
+	
+	dd.listen('click', e => {
+		dd.closest('div').classList.toggle('open')
+	})
+	
+	document.listen("click", e => {
+		if(e.target == dd) return
+		if(dd.closest('div').contains(e.target)) return
+		dd.closest('div').classList.remove('open')
 	})
 }

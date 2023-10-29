@@ -83,12 +83,17 @@ body > .wrapper
 		padding-bottom: 14px
 		@media(max-width: 1205px)
 			gap: 3%
+		@media(max-width: 430px)
+			justify-content: space-between
+		a.logo
+			@media(max-width: 675px)
+				display: block !important
 		.mobile-dropdown
 			display: none
 			position: relative
 			top: -2px
 			cursor: pointer
-			position: relative
+			position: relative	
 			img
 				background-color: rgba(103, 121, 255, 0.13)
 				padding: 5px 8px
@@ -98,6 +103,8 @@ body > .wrapper
 					background-color: darken(rgba(103, 121, 255, 0.13), 10%)
 			@media(max-width: 1205px)
 				display: block
+			@media(max-width: 675px)
+				display: none !important
 			&.open ul
 				display: block	
 			ul
@@ -114,11 +121,58 @@ body > .wrapper
 						padding: 5px 1rem
 						display: inline-block
 						width: 100%
+		.mobile-menu
+			display: none
+			margin-top: -2px
+			cursor: pointer
+			
+			@media(max-width: 675px)
+				display: block
+			&.open .wrap
+				display: block
+			img
+				background-color: rgba(103, 121, 255, 0.13)
+				padding: 5px 8px
+				border-radius: 3px
+				box-sizing: content-box
+				&:hover
+					background-color: darken(rgba(103, 121, 255, 0.13), 10%)
+			.wrap
+				background-color: rgba(0, 0, 0, 0.31)
+				position: absolute
+				top: 59px
+				left: 0
+				width: 100%
+				height: 100%
+				overflow: auto
+				z-index: 2
+				display: none
+				ul
+					position: absolute
+					background-color: #fff
+					z-index: 2
+					box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2)
+					padding: 10px 0
+					top: 0
+					left: 0
+					width: 50%
+					padding: 1rem
+					height: 100%
+					li
+						line-height: 250%
+						font-size: 1.1rem
 		a
 			color: $purple
 			text-decoration: none
 			&.callback
 				color: $orange
+				@media(max-width: 675px)
+					display: none
+			&.calc
+				color: $orange
+				display: none
+				@media(max-width: 675px)
+					display: block
 			&:hover
 				text-decoration: underline	
 
@@ -147,6 +201,8 @@ body > .wrapper
 				@media(max-width: 1073px)
 					&.viber
 						display: none
+				@media(max-width: 675px)
+					display: none
 	#search
 		display: flex
 		align-items: center
@@ -329,21 +385,26 @@ body > .wrapper
 				border-radius: 0
 				img
 					border-radius: 0
-			&:after
-				content: ''
-				background: linear-gradient(0deg, rgba(26,28,51,1) 0%, rgba(26,28,51,0) 100%)
-				width: 100%
-				display: block
-				bottom: 0
-				height: 30%
-				position: absolute
-				border-bottom-left-radius: 8px
-				border-bottom-right-radius: 8px
+			&[role]		
+				&:after
+					content: ''
+					background: linear-gradient(0deg, rgba(26,28,51,1) 0%, rgba(26,28,51,0) 100%)
+					width: 100%
+					display: block
+					bottom: 0
+					height: 30%
+					position: absolute
+					border-bottom-left-radius: 8px
+					border-bottom-right-radius: 8px
 			img
 				border-radius: 8px
 				height: auto
 				@media(max-width: 1000px)
 					width: 100%
+				@media(max-width: 430px)
+					object-fit: cover
+					&[src]
+						height: 244px
 				
 					
 			span.slogan
@@ -423,11 +484,6 @@ body > .wrapper
 						display: inline-block
 						&:not(:last-child)
 							margin-right: 5px
-			
-
-
-
-
 body.index-page
 	#home_widgets
 		display: grid
@@ -436,9 +492,13 @@ body.index-page
 		margin-bottom: 1rem
 		@media(max-width: 1250px)
 			grid-template-columns: 288px
+		@media(max-width: 430px)
+			grid-template-columns: auto
 		.widget
 			font-size: 14px
 			border-radius: 8px
+			@media(max-width: 430px)
+				font-size: 1.1rem
 			&.content
 				border: 1px solid $border_color
 				color: #676767

@@ -10,16 +10,18 @@ export const Ui = async () =>{
 	routes_accordion()
 	
 	await Sw.load()
-	Sw.lazy(qs('[swiper]'))
+	
 	Sw.init(qs('[swiper]'),{
 		navigation: {
 			nextEl: qs('.arrows img.next'),
 			prevEl: qs('.arrows img.prev'),
 		},
 	})
+	Sw.lazy(qs('[swiper]'))
 
 	home_callback_form()
 	soc_dropdown()
+	mobile_menu()
 	
 }
 
@@ -64,5 +66,27 @@ function soc_dropdown(){
 		if(e.target == dd) return
 		if(dd.closest('div').contains(e.target)) return
 		dd.closest('div').classList.remove('open')
+	})
+}
+
+function mobile_menu(){
+	let mi = qs('.mobile-menu img')
+	if(!mi) return
+	
+	mi.listen("click", e => {
+		mi.closest('div').classList.toggle('open')
+		qs('body').classList.toggle('stop-scrolling')
+	})
+
+	document.listen("click", e => {
+		if(e.target == mi) return
+		if(e.target == qs('.mobile-menu .wrap')){
+			mi.closest('div').classList.remove('open')
+			qs('body').classList.remove('stop-scrolling')
+			return
+		}
+		if(mi.closest('div').contains(e.target)) return
+		mi.closest('div').classList.remove('open')
+		qs('body').classList.remove('stop-scrolling')
 	})
 }

@@ -1,6 +1,6 @@
 import { qs,qsa, xml } from "../libs"
 import { Calendar } from "./Calendar"
-import { Sw } from "./Swiper"
+
 
 export const Ui = async () =>{
 	await Calendar.load()
@@ -8,16 +8,6 @@ export const Ui = async () =>{
 
 	transport_type_dropdown()
 	routes_accordion()
-	
-	await Sw.load()
-	
-	Sw.init(qs('[swiper]'),{
-		navigation: {
-			nextEl: qs('.arrows img.next'),
-			prevEl: qs('.arrows img.prev'),
-		},
-	})
-	Sw.lazy(qs('[swiper]'))
 
 	home_callback_form()
 	soc_dropdown()

@@ -656,4 +656,15 @@ body.route-page
 	.map
 		iframe
 			border-radius: 6px
+.routes.block
+	.arrows
+		display: flex
+		gap: 1rem
+		img
+			filter: $purple_icon
+			&.next
+				transform: rotate(180deg)
+			&.swiper-button-disabled
+				filter: $grey_icon	
+
 

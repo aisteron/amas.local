@@ -75,6 +75,17 @@ body > .wrapper
 		padding: 0 20px
 		@media(max-width: 675px)
 			padding: 0 1rem
+		h1
+			font-weight: 300
+			font-size: 45px
+			color: $purple
+			margin-top: 12px
+			margin-bottom: 10px
+			line-height: 110%
+		.dsc
+			font-size: 14px
+			color: $black
+			line-height: 154%
 	#header_contacts
 		display: flex
 		font-weight: 600
@@ -556,4 +567,93 @@ body.index-page
 					&:focus
 						outline: none
 						border-color: $black
-					
+
+// routes.html
+nav.bread
+	a
+		color: #676767
+		text-decoration: none
+		&:hover
+			text-decoration: underline
+	ol
+		list-style: none
+		display: flex
+		background-color: #F0F0F0
+		margin: 0 -20px
+		padding-left: 20px
+		padding-top: 6px
+		padding-bottom: 6px
+		font-size: 14px
+		gap: 20px
+		li
+			&:not(:last-child)
+				&:after
+					content: "/"
+					position: relative
+					left: 10px
+.masonry
+	display: grid
+	grid-gap: 1em
+	grid-template-columns: repeat(auto-fill, minmax(200px,1fr))
+	grid-auto-rows: 0			
+#route_cards
+	margin-bottom: 1rem
+	margin-top: 2rem
+	.card
+		border-radius: 8px
+		border: 1px solid $border_color
+		padding: 20px
+		font-size: 14px
+
+		a
+			text-decoration: none
+			color: $black
+			&:hover
+				text-decoration: underline
+				color: $purple
+		span.header
+			font-size: 1rem
+			font-weight: 600
+			display: inline-block
+			margin-bottom: 9px
+		ul
+			line-height: 200%
+			&:not(:last-child)
+				border-bottom: 1px solid $border_color
+				margin: 0 -1rem
+				padding: 0 1rem
+				padding-bottom: 1rem
+			&:not(:first-of-type)	
+				padding-top: 1rem
+
+// route.html
+.block h3
+	font-size: 1rem
+	color: $purple
+#how_to_work
+	ul
+		display: flex
+		gap: 20px
+		li
+			width: 182px
+			height: 194px
+			border: 1px solid $border_color
+			display: flex
+			flex-direction: column
+			align-items: center
+			padding: 20px
+			text-align: center
+			gap: 10px
+			&:last-of-type
+				justify-content: space-between
+			span
+				&.h
+					font-weight: 600
+					font-size: 1rem
+				&.d
+					font-size: 13px	
+body.route-page
+	.map
+		iframe
+			border-radius: 6px
+

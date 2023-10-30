@@ -1,80 +1,9 @@
-aside
-	.logo
-		a(href="/")
-			img(src="/assets/img/logo.svg" width="55" height="24")
-		.dsc
-			span международные
-			span грузоперевозки
-	nav
-		ul
-			li.active
-				a(href="/")
-					img(src="/assets/img/icons/nav/home.svg" width="23" height="21")
-					span Главная
-			li
-				a(href="/routes.html")
-					img(src="/assets/img/icons/nav/routes.svg" width="22" height="22")
-					span Маршруты
-			li
-				a(href="/calc.html")
-					img(src="/assets/img/icons/nav/calc.svg" width="24" height="24")
-					span Расчет ставки
-			li
-				a(href="/about.html")
-					img(src="/assets/img/icons/nav/about.svg" width="24" height="24")
-					span О нас
-			li
-				a(href="/contacts.html")
-					img(src="/assets/img/icons/nav/contacts.svg" width="24" height="24")
-					span Контакты
+include ../../ui/aside.pug
 section#content
-	#header_contacts
-		a.logo(href="/" style="display:none")
-			img(src="/assets/img/logo.svg" width="55" height="24" loading="lazy")
-		a.tel(href="tel:") +375 29 690 39 73
-		ul.mess
-			li.viber
-				a(href="#") Viber
-			li.wa
-				a(href="#") WhatsApp
-			li.sk
-				a(href="#") Skype
-			li.tg
-				a(href="#") Telegram
-		.mobile-dropdown
-			img(loading="lazy" src="/assets/img/icons/d3.svg" width="3" height="15")
-			ul
-				li.viber
-					a(href="#") Viber
-				li.wa
-					a(href="#") WhatsApp
-				li.sk
-					a(href="#") Skype
-				li.tg
-					a(href="#") Telegram
-		a.calc(href="/calc.html") Расчет цены
-		.mobile-menu
-			img(loading="lazy" src="/assets/img/icons/d3.svg" width="3" height="15")
-			.wrap
-				ul
-					li
-						a(href="/") Главная
-					li
-						a(href="/") Маршруты
-					li
-						a(href="/") Расчет ставки
-					li
-						a(href="/") О нас
-					li
-						a(href="/") Контакты
-		a.callback(href="#") Перезвоните мне
+	include ../../ui/header_contacts.pug
 	include ../../ui/pages/home/swiper.pug
 	include ../../ui/pages/home/content.pug
 
-#sidebar
-	#search
-		input(type="text")
-		img.search(src="/assets/img/icons/search.svg" width="18" height="20")
-	include ../../ui/calc_form
-	include ../../ui/routes_accordion
+include ../../ui/sidebar.pug
+
 

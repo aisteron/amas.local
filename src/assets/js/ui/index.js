@@ -22,6 +22,8 @@ export const Ui = async () =>{
 	home_callback_form()
 	soc_dropdown()
 	mobile_menu()
+
+	masonry()
 	
 }
 
@@ -89,4 +91,17 @@ function mobile_menu(){
 		mi.closest('div').classList.remove('open')
 		qs('body').classList.remove('stop-scrolling')
 	})
+}
+
+function masonry(){
+	// https://w3bits.com/css-grid-masonry/
+	qsa('#route_cards .card').forEach(el => resizeMasonryItem(el))
+	function resizeMasonryItem(item){
+
+		var grid = document.getElementsByClassName('masonry')[0],
+				rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap')),
+				rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+		var rowSpan = Math.ceil((item.querySelector('.masonry-content').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
+		item.style.gridRowEnd = 'span '+(rowSpan+2);
+	}
 }

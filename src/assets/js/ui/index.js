@@ -1,5 +1,6 @@
 import { qs,qsa, xml } from "../libs"
 import { Calendar } from "./Calendar"
+import { sliders } from "./sliders"
 
 
 export const Ui = async () =>{
@@ -14,6 +15,7 @@ export const Ui = async () =>{
 	mobile_menu()
 
 	masonry()
+	sliders()
 	
 }
 

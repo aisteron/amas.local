@@ -627,10 +627,14 @@ nav.bread
 				padding-top: 1rem
 
 // route.html
+body.route-page
+	.map
+		iframe
+			border-radius: 6px	
 .block h3
 	font-size: 1rem
 	color: $purple
-#how_to_work
+.how.block
 	ul
 		display: flex
 		gap: 20px
@@ -652,19 +656,45 @@ nav.bread
 					font-size: 1rem
 				&.d
 					font-size: 13px	
-body.route-page
-	.map
-		iframe
-			border-radius: 6px
 .routes.block
+
 	.arrows
 		display: flex
 		gap: 1rem
+		margin-bottom: 1rem
 		img
 			filter: $purple_icon
 			&.next
 				transform: rotate(180deg)
 			&.swiper-button-disabled
-				filter: $grey_icon	
+				filter: $grey_icon
+	.swiper.swiper
+		.swiper-slide
+			width: 139px
+			height: 145px
+			border: 1px solid $border_color
+			border-radius: 8px
+			padding: 1rem
+			&:hover
+				border-color: $purple
+				a
+					color: $purple
+				img
+					filter: $purple_icon	
+			a
+				display: flex
+				flex-direction: column
+				gap: 1rem
+				align-items: center
+				justify-content: space-between
+				color: $black
+				font-size: 14px
+				text-decoration: none
+				span
+					display: inline-block
+					margin-bottom: -10px
+				img
+					margin-top: 1rem	
+
 
 

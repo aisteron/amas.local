@@ -4,6 +4,7 @@ import {Sw} from './Swiper'
 export const sliders = () =>{
 	home()
 	routes_slider()
+	partners_slider()
 }
 
 
@@ -29,10 +30,25 @@ async function routes_slider(){
 	&&
 		Sw.init(sr,{
 			slidesPerView: 4,
-			spaceBetween: 20,
+			spaceBetween: 16,
 			navigation: {
 				nextEl: qs('img.next',sr.previousElementSibling),
 				prevEl: qs('img.prev',sr.previousElementSibling),
+			},
+		})
+}
+
+async function partners_slider(){
+	let ps = qs('.swiper.partners')
+	if(!ps) return
+	await Sw.load()
+	&&
+		Sw.init(ps,{
+			slidesPerView: 4,
+			spaceBetween: 16,
+			navigation: {
+				nextEl: qs('img.next',ps.previousElementSibling),
+				prevEl: qs('img.prev',ps.previousElementSibling),
 			},
 		})
 }

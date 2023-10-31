@@ -1,0 +1,21 @@
+
+block variables
+
+doctype html
+html(lang='ru')
+	head
+		meta(charset='utf-8')
+		title #{title}
+		meta(name="description", content=description)
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		block head
+
+	body(class=pageClass)
+		.wrapper
+			include ../../ui/aside.pug
+			section#content
+				include ../../ui/header_contacts.pug
+				include ./bread.pug
+				include ./content.pug
+			include ../../ui/sidebar.pug
+			include ../../ui/footer

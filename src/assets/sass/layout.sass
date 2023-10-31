@@ -75,20 +75,34 @@ body > .wrapper
 		padding: 0 20px
 		@media(max-width: 675px)
 			padding: 0 1rem
-		.content	
+		.cnt	
 			p
 				font-size: 14px
 				color: $black
 				line-height: 154%
 				&.b
 					font-weight: 600
+					&:not(:first-child)
+						margin-top: 20px
 			ul
 				li
 					font-size: 14px
 					line-height: 150%
-					color: $black
+					//color: $black
 					list-style: disc
 					margin-left: 20px
+				&.c
+					&:last-of-type
+						margin-top: 1rem
+					li
+						margin-left: 0
+						line-height: 150%
+						list-style-type: none
+					a
+						color: $purple
+						text-decoration: none
+						&:hover
+							text-decoration: underline	
 		h1
 			font-weight: 300
 			font-size: 45px
@@ -96,6 +110,7 @@ body > .wrapper
 			margin-top: 12px
 			margin-bottom: 10px
 			line-height: 110%
+			font-family: Open Sans Light
 			@media(max-width: 400px)
 				font-size: 23px
 				font-weight: 600
@@ -105,6 +120,10 @@ body > .wrapper
 			font-size: 14px
 			color: $black
 			line-height: 154%
+		.block.map
+			iframe
+				border-radius: 8px
+
 	#header_contacts
 		display: flex
 		font-weight: 600
@@ -514,6 +533,22 @@ body > .wrapper
 						display: inline-block
 						&:not(:last-child)
 							margin-right: 5px
+		.popup
+			position: absolute
+			top: 0
+			left: 0
+			background-color: #1111114f
+			width: 100%
+			height: 100%
+			z-index: 2
+			display: none
+			&.open
+				display: block
+			.widget.callback
+				max-width: 308px
+				background-color: #fff
+				border-radius: 6px
+				margin: 2rem auto
 body.index-page
 	#home_widgets
 		display: grid
@@ -534,6 +569,11 @@ body.index-page
 				color: #676767
 				padding: 1rem
 				line-height: 150%
+				p
+					margin-top: 0
+				a.button.purple
+					
+					display: inline-block
 				ul.arch
 					color: $purple
 					font-weight: 600
@@ -541,6 +581,7 @@ body.index-page
 					li
 						position: relative
 						line-height: 200%
+						list-style: none
 						&:before
 							content: url(/assets/img/icons/archive.svg)
 							filter: $grey_icon
@@ -566,26 +607,26 @@ body.index-page
 					font-size: 76px
 				.label
 					font-size: 28px	
-			&.callback
-				box-shadow: 0px 5px 23px 0px rgba(0, 0, 0, 0.14)
-				padding: 25px
-				align-self: baseline
-				p
-					color: $grey
-					margin: 0
-				input
-					border: none
-					border-bottom: 1px solid $purple
-					margin: 1rem 0
-					width: 100%
-					padding-bottom: 5px
-					&::placeholder
-						font-family: "Open Sans"
-						font-weight: 600
-						color: #959BAB
-					&:focus
-						outline: none
-						border-color: $black
+.widget.callback
+	box-shadow: 0px 5px 23px 0px rgba(0, 0, 0, 0.14)
+	padding: 25px
+	align-self: baseline
+	p
+		color: $grey
+		margin: 0
+	input
+		border: none
+		border-bottom: 1px solid $purple
+		margin: 1rem 0
+		width: 100%
+		padding-bottom: 5px
+		&::placeholder
+			font-family: "Open Sans"
+			font-weight: 600
+			color: #959BAB
+		&:focus
+			outline: none
+			border-color: $black
 
 // routes.html
 nav.bread
@@ -773,3 +814,16 @@ body.route-page
 				flex-direction: column
 				justify-content: space-between
 				padding: 20px
+
+//contacts.html
+body.contacts-page
+	#content
+		margin-bottom: 1rem
+		.widget.callback
+			width: 308px
+// calc.html
+body.calc-page	
+	#calc_form
+		max-width: 282px
+		margin-top: 1rem
+		margin-bottom: 1rem

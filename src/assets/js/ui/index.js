@@ -16,6 +16,8 @@ export const Ui = async () =>{
 
 	masonry()
 	sliders()
+
+	popup_widget_callback()
 	
 }
 
@@ -39,13 +41,15 @@ function routes_accordion(){
 }
 
 function home_callback_form(){
-	let form = qs('.widget.callback form')
-	if(!form) return
-	
-	form.listen('submit', async e => {
+	let forms = qsa('.widget.callback form')
+	if(!forms) return
+	forms.forEach(form => {
+		form.listen('submit', async e => {
 		e.preventDefault()
 		await xml("widget_callback",{phone: qs('input',e.target).value}, '/api')
+		})
 	})
+	
 }
 
 function soc_dropdown(){
@@ -96,4 +100,19 @@ function masonry(){
 		var rowSpan = Math.ceil((item.querySelector('.masonry-content').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
 		item.style.gridRowEnd = 'span '+(rowSpan+2);
 	}
+}
+
+function popup_widget_callback(){
+	let cb = qs('#header_contacts .callback')
+	if(!cb) return
+	cb.listen("click", e => {
+		e.preventDefault()
+		qs('.popup').classList.add('open')
+	})
+
+	document.listen('click', e=> {
+		if(e.target == qs('.popup')){
+			qs('.popup').classList.remove('open')
+		}
+	})
 }

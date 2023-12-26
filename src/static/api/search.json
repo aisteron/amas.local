@@ -1,0 +1,13 @@
+{
+	"search": [
+		{
+			"url": "test",
+			"title": "Title 1"
+		},
+		{
+			"url": "test",
+			"title": "Title 2"
+		}
+	],
+	"success": true
+}

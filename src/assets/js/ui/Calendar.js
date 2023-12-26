@@ -35,7 +35,8 @@ export const Calendar = {
 	init(){
 
 		let f = undefined;
-
+		if(!qs('label.calendar input')) return
+		
 		qs('label.calendar input').addEventListener("click", e =>{
 
 			f = flatpickr(e.target, {

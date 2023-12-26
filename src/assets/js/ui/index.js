@@ -1,4 +1,4 @@
-import { qs,qsa, xml } from "../libs"
+import { debounce, load_toast, qs,qsa, xml } from "../libs"
 import { Calendar } from "./Calendar"
 import { sliders } from "./sliders"
 
@@ -18,6 +18,9 @@ export const Ui = async () =>{
 	sliders()
 
 	popup_widget_callback()
+	calc_form_submit()
+
+	search()
 	
 }
 
@@ -42,11 +45,26 @@ function routes_accordion(){
 
 function home_callback_form(){
 	let forms = qsa('.widget.callback form')
+	
 	if(!forms) return
 	forms.forEach(form => {
 		form.listen('submit', async e => {
 		e.preventDefault()
-		await xml("widget_callback",{phone: qs('input',e.target).value}, '/api')
+
+		await load_toast()
+
+		try{
+			let res = await xml("widget_callback",{phone: qs('input',e.target).value}, '/api').then(r => JSON.parse(r))
+			if(res.success){
+				qs('input', form).value = ''
+				new Snackbar("Успешно отправлено")
+			} else {
+				new Snackbar("Что-то пошло не так")
+			}
+		} catch(e){
+			new Snackbar(e)
+		}
+		
 		})
 	})
 	
@@ -103,12 +121,18 @@ function masonry(){
 }
 
 function popup_widget_callback(){
-	let cb = qs('#header_contacts .callback')
+	let cb = [qs('#header_contacts .callback'),qs('footer .cb')];
+
 	if(!cb) return
-	cb.listen("click", e => {
-		e.preventDefault()
-		qs('.popup').classList.add('open')
+	cb.forEach(c => {
+
+		c.listen("click", e => {
+			e.preventDefault()
+			qs('.popup').classList.add('open')
+		})
+
 	})
+	
 
 	document.listen('click', e=> {
 		if(e.target == qs('.popup')){
@@ -116,3 +140,124 @@ function popup_widget_callback(){
 		}
 	})
 }
+
+function calc_form_submit(){
+	let form = qs("#calc_form")
+	let submit = qs(".send.regular", form)
+	
+	if(!form || !submit) return
+
+	submit.listen("click", async e => {
+
+		let phone = qs('label.phone input', form).value
+
+		if(!phone){
+			await load_toast()
+			new Snackbar("Пожалуйста, заполните, номер телефона")
+			qs('label.phone input', form).focus()
+			return
+		}
+
+		let type = Array.from(qsa('.type input',form))
+								.map(el => el.checked && el.nextElementSibling.innerHTML)
+								.filter(el => el)
+		
+		let o = {
+			from: qs('label.from input', form).value,
+			to: qs('label.to input', form).value,
+			mass:[qs('label.mass_from input', form).value, qs('label.mass_to input', form).value],
+			vol:[qs('label.vol_from input', form).value, qs('label.vol_to input', form).value],
+			date:qs('label.calendar input', form).value,
+			name: qs('label.name input', form).value,
+			type: type,
+			phone: phone
+		}
+
+		await load_toast()
+
+		try {
+			let res = await xml('calc_form', o, '/api').then(r => JSON.parse(r))
+
+			res.success
+			? new Snackbar("Успешно отправлено")
+			: new Snackbar("Что-то пошло не так")
+
+			draw_calc_form_response(res.success)
+
+		} catch(e){
+			new Snackbar(e)
+		}
+	})
+	
+}
+
+function draw_calc_form_response(result){
+	let o = {
+		icon: result ? 'ok':'false',
+		title: result ? 'Мы получили ваш запрос':'Произошла ошибка',
+		dsc: result ? 'Ожидайте звонка менеджера': 'Попробуйте еще раз и сообщите, нам, пожалуйста'
+	}
+	let str = `
+	<div class="result">
+		<img src="/assets/img/icons/${o.icon}.svg" width="37" height="37">
+		<span class="title">${o.title}</span>
+		<span class="dsc">${o.dsc}</span>
+	</div>
+	`
+	qs('#calc_form').innerHTML = str
+}
+
+async function search(){
+	let s = qs('#search')
+	let input = qs('input', s)
+	if(!s) return
+	await load_toast()
+
+	let debounceSearch = debounce(fsearch,500)
+	input.listen("keyup", debounceSearch)
+
+	qs('img.search', s).listen("click", _ => {
+		if(!qs('input', s).value.length) return
+		fsearch()
+	})
+
+	async function fsearch(){
+		let str = input.value.toLowerCase()
+
+		if(str.length < 3){
+			new Snackbar("Меньше 3 знаков нельзя")
+			return
+		}
+
+		try {
+
+			let res = await xml('search', {query: str}, '/api').then(r => JSON.parse(r))
+			
+			res.success
+			? draw_search_res(res)
+			: new Snackbar("Произошла ошибка")
+			
+		} catch(e){
+			new Snackbar(e)
+		}
+		
+	}
+}
+
+function draw_search_res(res){
+
+	let str = `<ul class="search_results">`
+	res.search.forEach(el => str += ` <li><a href="${el.url}">${el.title}</a></li>`)
+	str +=`</ul>`
+
+
+	qs('ul.search_results') && qs('ul.search_results').remove()
+	qs('#search').insertAdjacentHTML('beforeend', str)
+
+	document.listen("click", e => {
+		if(!qs('ul.search_results')) return
+		if(qs('ul.search_results').contains(e.target)) return
+		qs('ul.search_results').remove()
+	})
+}
+

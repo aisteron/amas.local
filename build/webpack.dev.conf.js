@@ -1,6 +1,7 @@
 const webpack =  require('webpack')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
+const fs = require('fs')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   // DEV config
@@ -13,8 +14,32 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     overlay: {
       warnings: true,
       errors: true
-    }
-  },
+    },
+ 
+		setup(app){
+			var bodyParser = require('body-parser');    
+			app.use(bodyParser.urlencoded({extended : true}));
+			app.use(bodyParser.json());
+			
+			app.post('/api', (req, res) => {
+
+				if(req.body.action == 'widget_callback'){
+					const data = fs.readFileSync('./src/static/api/zayavka.json', 'utf8')
+					res.send(data)
+				}
+				if(req.body.action == 'calc_form'){
+					const data = fs.readFileSync('./src/static/api/zayavka.json', 'utf8')
+					res.send(data)
+				}
+				if(req.body.action == 'search'){
+					const data = fs.readFileSync('./src/static/api/search.json', 'utf8')
+					res.send(data)
+				}
+
+			});
+
+		}
+	},	
   plugins: [
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map'

@@ -255,6 +255,7 @@ body > .wrapper
 	#search
 		display: flex
 		align-items: center
+		position: relative
 		input
 			width: 100%
 			flex-grow: 1
@@ -262,6 +263,7 @@ body > .wrapper
 			border-radius: 8px
 			height: 38px
 			margin-right: -1rem
+			padding-left: 8px
 			&:focus
 				outline: none
 				border-color: $purple
@@ -272,6 +274,19 @@ body > .wrapper
 			cursor: pointer
 			&:hover
 				filter: $purple_icon
+		ul.search_results
+			box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2)
+			background-color: #fff
+			position: absolute
+			top: 39px
+			width: 100%
+			padding: 1rem
+			border-radius: 4px
+			li
+				line-height: 160%
+				a
+					&:hover
+						text-decoration: none
 	#calc_form
 		padding: 20px
 		border: 1px solid $orange
@@ -280,6 +295,17 @@ body > .wrapper
 		display: flex
 		flex-direction: column
 		gap: 26px
+		.result
+			display: flex
+			flex-direction: column
+			gap: 1rem
+			align-items: center
+			span
+				&.title
+					font-weight: 600
+					font-size: 1rem
+				&.dsc
+					font-size: 14px	
 		button.send
 			width: 125px
 			align-self: flex-end

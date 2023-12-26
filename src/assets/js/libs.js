@@ -62,3 +62,44 @@ export async function xml(action, data, path){
 		xhr.send(body);
 	})
 }
+
+
+export function debounce(func, wait, immediate) {
+	// https://gist.github.com/ionurboz/51b505ee3281cd713747b4a84d69f434
+
+	// DEMO:
+
+	// function onMouseMove(e){
+	// 	console.clear();
+	// 	console.log(e.x, e.y);
+	// }
+
+	// // Define the debounced function
+	// var debouncedMouseMove = debounce(onMouseMove, 50);
+
+	// // Call the debounced function on every mouse move
+	// window.addEventListener('mousemove', debouncedMouseMove);
+
+
+  var timeout;
+
+
+  return function() {
+
+    var context = this,
+      args = arguments;
+    var callNow = immediate && !timeout;
+
+    clearTimeout(timeout);
+
+    timeout = setTimeout(function() {
+      timeout = null;
+
+      if (!immediate) {
+        func.apply(context, args);
+      }
+    }, wait);
+
+    if (callNow) func.apply(context, args);
+  }
+}

@@ -45,7 +45,7 @@ function routes_accordion(){
 
 function home_callback_form(){
 	let forms = qsa('.widget.callback form')
-	
+	console.log(forms)
 	if(!forms) return
 	forms.forEach(form => {
 		form.listen('submit', async e => {
@@ -128,6 +128,7 @@ function popup_widget_callback(){
 
 		c.listen("click", e => {
 			e.preventDefault()
+			window.scrollTo({top: 0, behavior: 'smooth'});
 			qs('.popup').classList.add('open')
 		})
 

@@ -235,7 +235,7 @@ async function search(){
 			
 			res.success
 			? draw_search_res(res)
-			: new Snackbar("Произошла ошибка")
+			: new Snackbar("Ничего не найдено")
 			
 		} catch(e){
 			new Snackbar(e)

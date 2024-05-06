@@ -207,6 +207,12 @@ function draw_calc_form_response(result){
 	`
 	qs('#calc_form').innerHTML = str
 
+
+	// yandex event
+	ym(95990906,'reachGoal','calc_form')
+
+	// google event
+
 	gtag_report_conversion(document.location.href)
 
 	function gtag_report_conversion(url) {

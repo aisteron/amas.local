@@ -206,6 +206,26 @@ function draw_calc_form_response(result){
 	</div>
 	`
 	qs('#calc_form').innerHTML = str
+
+	gtag_report_conversion(document.location.href)
+
+	function gtag_report_conversion(url) {
+		var callback = function () {
+			if (typeof(url) != 'undefined') {
+				window.location = url;
+			}
+		};
+		gtag('event', 'conversion', {
+				'send_to': 'AW-16552283121/EzEyCJztkq0ZEPGX39Q9',
+				'value': 1.0,
+				'currency': 'USD',
+				'transaction_id': '',
+				'event_callback': callback
+		});
+		return false;
+	}
+
+
 }
 
 async function search(){
